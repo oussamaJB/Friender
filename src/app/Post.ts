@@ -1,17 +1,20 @@
-import {User} from './User' ;
+import {User} from './User';
+import { DatePipe } from '@angular/common';
 
-class Post{
+export class Post{
   postUser: User ;
   postText: string;
   postImgURL: string;
+  postDate: string ;
   likesCount: number;
-  Comments: Map;
+  comments: Map<string, string>;
 
-  constructor(user: User, text: string, img: string, likes: number, Comments: Map) {
+  constructor(user: User, text: string, img: string, date: string, likes: number, Comments: Map<string, string>) {
     this.postUser = user;
     this.postText = text;
     this.postImgURL = img;
+    this.postDate = date;
     this.likesCount = likes;
-    this.Comments = Comments;
+    this.comments = Comments;
   }
 }

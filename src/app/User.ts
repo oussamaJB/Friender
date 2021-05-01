@@ -1,9 +1,9 @@
-class User {
-  userName: String;
+export class User {
+  userName: string;
   userIconURL: string;
 
   constructor(name: string, icon: string) {
     this.userName = name;
-    this.userIcon = icon;
+    this.userIconURL = icon;
   }
 }
