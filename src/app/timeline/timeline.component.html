@@ -47,15 +47,13 @@
                         <ins><a title=""> {{ post.postUser.userName }} </a></ins>
                         <span>published: {{ post.postDate }}</span>
                       </div>
-                      <div class="description">
-
-                        <p>
-                          {{ post.postText }}
-                        </p>
-                      </div>
                       <div class="post-meta">
                         <img [src]=post.postImgURL alt="">
-
+                        <div class="description">
+                          <p>
+                            {{ post.postText }}
+                          </p>
+                        </div>
                         <div class="we-video-info">
                           <ul>
                             <li>
