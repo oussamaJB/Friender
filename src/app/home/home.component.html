@@ -17,7 +17,7 @@
                     </figure>
                     <div class="newpst-input">
                       <form method="post">
-                        <textarea rows="2" placeholder="Write something"></textarea>
+                        <textarea [(ngModel)]="text" name="post-text"  rows="2" placeholder="write something"></textarea>
                         <div class="attachments">
                           <ul>
                             <li>
@@ -27,7 +27,7 @@
                               </label>
                             </li>
                             <li>
-                              <button type="submit">Post</button>
+                              <button (click)="postImg()">Publish</button>
                             </li>
                           </ul>
                         </div>
@@ -56,16 +56,28 @@
                           </div>
                           <div class="we-video-info">
                             <ul>
-                              <li>
-															  <span class="like" data-toggle="tooltip" title="like">
-																  <i class="far fa-heart"></i>
-																  <ins>{{ post.likesCount }}</ins>
-															  </span>
-                              </li>
+                              <li *ngIf="post.liked; then liked else notLiked "> </li>
+                              <ng-template #liked>
+                                <li>
+                                  <span class="like" data-toggle="tooltip" title="like">
+																    <i (click)="pressHeart(post)" class="far fa-heart"></i>
+																    <ins>{{ post.likesCount }}</ins>
+                                  </span>
+                                </li>
+                              </ng-template>
+                              <ng-template #notLiked>
+                                <li>
+                                  <span class="dislike" data-toggle="tooltip" title="like">
+																    <i (click)="pressHeart(post)" class="far fa-heart"></i>
+																    <ins>{{ post.likesCount }}</ins>
+                                  </span>
+                                </li>
+                              </ng-template>
+
                               <li>
 															  <span class="comment" data-toggle="tooltip" title="Comments">
 																  <i class="far fa-comments"></i>
-																  <ins> {{ post.comments.size }}</ins>
+																  <ins> {{ post.comments.length }}</ins>
 															  </span>
                               </li>
                             </ul>
@@ -75,15 +87,16 @@
                       </div>
                       <div class="coment-area">
                         <ul class="we-comet">
-                          <li *ngFor="let commentUser of post.comments.keys()" >
+                          <li *ngFor="let comment of post.comments" >
                             <div class="comet-avatar">
-                              <img width="45" height="45"  [src]="users.get(commentUser)" alt="">
+                              <img width="45" height="45"  [src]="users.get(comment[0])" alt="">
                             </div>
                             <div class="we-comment">
                               <div class="coment-head">
-                                <h5><a href="" title=""> {{ commentUser }}</a></h5>
+                                <h5><a href="" title=""> {{ comment[0] }}</a></h5>
+                                <span> {{ comment[2] }} </span>
                               </div>
-                              <p> {{ post.comments.get(commentUser) }}</p>
+                              <p> {{ comment[1] }}</p>
                             </div>
 
                           </li>
@@ -98,11 +111,9 @@
                             </div>
                             <div class="post-comt-box">
                               <form method="post">
-                                <textarea placeholder="Post your comment"></textarea>
-                                <div class="add-smiles">
-                                  <span class="em em-expressionless" title="add icon"></span>
-                                </div>
-                                <button type="submit"></button>
+                               <textarea [(ngModel)]="post.commentArea" (keyup.enter)="putComment(post)" name="comment-text"  placeholder="Post your comment">
+                                 <button   type="submit"></button>
+                               </textarea>
                               </form>
                             </div>
                           </li>

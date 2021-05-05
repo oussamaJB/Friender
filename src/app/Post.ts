@@ -1,5 +1,4 @@
 import {User} from './User';
-import { DatePipe } from '@angular/common';
 
 export class Post{
   postUser: User ;
@@ -7,14 +6,19 @@ export class Post{
   postImgURL: string;
   postDate: string ;
   likesCount: number;
-  comments: Map<string, string>;
+  comments: any[] ;
+  liked: boolean;
+  commentArea: string;
 
-  constructor(user: User, text: string, img: string, date: string, likes: number, Comments: Map<string, string>) {
+
+  constructor(user: User, text: string, img: string, date: string, likes: number, Comments: any[]) {
     this.postUser = user;
     this.postText = text;
     this.postImgURL = img;
     this.postDate = date;
     this.likesCount = likes;
     this.comments = Comments;
+    this.liked=false;
+    this.commentArea = '';
   }
 }

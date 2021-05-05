@@ -7,7 +7,6 @@ import {ProfileComponent} from './profile/profile.component';
 import {HomeComponent} from './home/home.component';
 import {TimelineComponent} from './timeline/timeline.component';
 import {PhotosComponent} from './photos/photos.component';
-import {AboutComponent} from './about/about.component';
 import {FriendsComponent} from './friends/friends.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
@@ -24,7 +23,6 @@ const routes: Routes = [
       {path: '', component: TimelineComponent},
       {path: 'timeline' , component: TimelineComponent},
       {path: 'photos' , component: PhotosComponent},
-      {path: 'about', component: AboutComponent},
       {path: 'friends', component: FriendsComponent}
     ]
   },

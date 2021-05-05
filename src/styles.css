@@ -1474,7 +1474,7 @@ form button {
 }
 
 .we-video-info > ul li span.dislike {
-  color: red;
+  color: black;
   cursor: pointer;
   transition: all 0.2s linear 0s;
 }
