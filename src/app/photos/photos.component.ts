@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../User';
 import {Post} from '../Post';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-photos',
@@ -36,9 +37,9 @@ export class PhotosComponent implements OnInit {
 
   // End of test cases
 
-  postsWithPhotos= this.posts.filter( post => !(post.postImgURL===''));
+  postsWithPhotos = this.data.posts.filter( post => !(post.postImgURL === ''));
 
-  constructor() { }
+  constructor(public data: DataService) { }
 
   ngOnInit(): void {
   }

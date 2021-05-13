@@ -13,6 +13,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { PhotosComponent } from './photos/photos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {FormsModule} from '@angular/forms';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

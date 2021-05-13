@@ -5,39 +5,36 @@
         <div class="col-lg-12">
           <div class="row" id="page-contents">
             <div class="col-lg-3">
-              <aside class="sidebar static">
-
-              </aside>
             </div><!-- sidebar -->
             <div class="col-lg-6">
-              <div class="loadMore">
-                <div class="central-meta item">
-                  <div class="new-postbox">
-                    <figure>
-                      <img src="/assets/images/resources/admin2.jpg" alt="">
-                    </figure>
-                    <div class="newpst-input">
-                      <form method="post">
-                        <textarea [(ngModel)]="text" name="post-text"  rows="2" placeholder="write something"></textarea>
-                        <div class="attachments">
-                          <ul>
-                            <li>
-                              <i class="fa fa-camera"></i>
-                              <label class="fileContainer">
-                                <input type="file">
-                              </label>
-                            </li>
-                            <li>
-                              <button (click)="postImg()">Publish</button>
-                            </li>
-                          </ul>
-                        </div>
-                      </form>
-                    </div>
+              <div class="central-meta">
+                <div class="new-postbox">
+                  <figure>
+                    <img src="/assets/images/resources/admin2.jpg" alt="">
+                  </figure>
+                  <div class="newpst-input">
+                    <form method="post">
+                      <textarea [(ngModel)]="text" name="post-text"  rows="2" placeholder="write something"></textarea>
+                      <div class="attachments">
+                        <ul>
+                          <li>
+                            <i class="fa fa-camera"></i>
+                            <label class="fileContainer">
+                              <input type="file">
+                            </label>
+                          </li>
+                          <li>
+                            <button (click)="this.interact.postImg(text); text=''; " >Publish</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </form>
                   </div>
                 </div>
+              </div><!-- add post new box -->
+
               <div class="loadMore">
-                <div *ngFor="let post of posts" class="central-meta item">
+                <div *ngFor="let post of this.interact.posts" class="central-meta item">
                   <div class="user-post">
                     <div class="friend-info">
                       <figure>
@@ -57,22 +54,22 @@
                         <div class="we-video-info">
                           <ul>
                             <li *ngIf="post.liked; then liked else notLiked "> </li>
-															<ng-template #liked>
-                                <li>
+                            <ng-template #liked>
+                              <li>
                                   <span class="like" data-toggle="tooltip" title="like">
-																    <i (click)="pressHeart(post)" class="far fa-heart"></i>
+																    <i (click)="this.interact.pressHeart(post)" class="far fa-heart"></i>
 																    <ins>{{ post.likesCount }}</ins>
                                   </span>
-                                </li>
-                              </ng-template>
-                              <ng-template #notLiked>
-                                <li>
+                              </li>
+                            </ng-template>
+                            <ng-template #notLiked>
+                              <li>
                                   <span class="dislike" data-toggle="tooltip" title="like">
-																    <i (click)="pressHeart(post)" class="far fa-heart"></i>
+																    <i (click)="this.interact.pressHeart(post)" class="far fa-heart"></i>
 																    <ins>{{ post.likesCount }}</ins>
                                   </span>
-                                </li>
-                              </ng-template>
+                              </li>
+                            </ng-template>
 
                             <li>
 															  <span class="comment" data-toggle="tooltip" title="Comments">
@@ -111,10 +108,9 @@
                           </div>
                           <div class="post-comt-box">
                             <form method="post">
-                              <textarea [(ngModel)]="post.commentArea" (keyup.enter)="putComment(post)" name="comment-text"  placeholder="Post your comment">
+                               <textarea [(ngModel)]="post.commentArea" (keyup.enter)="this.interact.putComment(post)" name="comment-text"  placeholder="Post your comment">
                                  <button   type="submit"></button>
-                              </textarea>
-
+                               </textarea>
                             </form>
                           </div>
                         </li>
@@ -123,13 +119,9 @@
                   </div>
                 </div>
               </div>
-              <!-- add post new box -->
-
-            </div>
-            </div>
+            </div><!-- centerl meta -->
             <div class="col-lg-3">
               <aside class="sidebar static">
-
               </aside>
             </div><!-- sidebar -->
           </div>
@@ -138,4 +130,3 @@
     </div>
   </div>
 </section>
-
