@@ -34,14 +34,14 @@
               </div><!-- add post new box -->
 
               <div class="loadMore">
-                <div *ngFor="let post of this.interact.posts" class="central-meta item">
+                <div *ngFor="let post of this.interact.MyPosts" class="central-meta item">
                   <div class="user-post">
                     <div class="friend-info">
                       <figure>
-                        <img [src]="post.postUser.userIconURL" alt="">
+                        <img [src]="post.userIconURL" alt="">
                       </figure>
                       <div class="friend-name">
-                        <ins><a title=""> {{ post.postUser.userName }} </a></ins>
+                        <ins><a title=""> {{ post.userName }} </a></ins>
                         <span>published: {{ post.postDate }}</span>
                       </div>
                       <div class="post-meta">

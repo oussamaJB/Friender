@@ -10,41 +10,15 @@
               <div class="col-lg-3">
               </div><!-- sidebar -->
               <div class="col-lg-6">
-                <div class="central-meta">
-                  <div class="new-postbox">
-                    <figure>
-                      <img src="/assets/images/resources/admin2.jpg" alt="">
-                    </figure>
-                    <div class="newpst-input">
-                      <form method="post">
-                        <textarea [(ngModel)]="text" name="post-text"  rows="2" placeholder="write something"></textarea>
-                        <div class="attachments">
-                          <ul>
-                            <li>
-                              <i class="fa fa-camera"></i>
-                              <label class="fileContainer">
-                                <input type="file">
-                              </label>
-                            </li>
-                            <li>
-                              <button (click)="this.interact.postImg(text); text=''; " >Publish</button>
-                            </li>
-                          </ul>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div><!-- add post new box -->
-
                 <div class="loadMore">
                   <div *ngFor="let post of this.interact.posts" class="central-meta item">
                     <div class="user-post">
                       <div class="friend-info">
                         <figure>
-                          <img [src]="post.postUser.userIconURL" alt="">
+                          <img [src]="post.userIconURL" alt="">
                         </figure>
                         <div class="friend-name">
-                          <ins><a title=""> {{ post.postUser.userName }} </a></ins>
+                          <ins><a title=""> {{ post.userName }} </a></ins>
                           <span>published: {{ post.postDate }}</span>
                         </div>
                         <div class="post-meta">

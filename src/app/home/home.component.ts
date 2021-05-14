@@ -10,11 +10,12 @@ import {DataService} from '../data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   users = this.data.getUsers();
   text = '';
 
-   constructor(public interact: InteractService, public data: DataService) {}
-   ngOnInit(): void {}
+  constructor(public interact: InteractService, public data: DataService) {}
+  ngOnInit(): void {
+        this.interact.loadNewsFeed();
+   }
 
 }

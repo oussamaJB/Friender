@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../User';
+import {DataService} from '../data.service';
+import {InteractService} from '../interact.service';
 
 @Component({
   selector: 'app-friends',
@@ -7,24 +9,13 @@ import {User} from '../User';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
-  followers = new Map<string, string>([
-    ['Amy', '/assets/images/resources/nearly1.jpg'],
-    ['Tracy', '/assets/images/resources/nearly3.jpg'],
-    ['Katy', '/assets/images/resources/nearly2.jpg'],
-    ['Susy', '/assets/images/resources/nearly4.jpg'],
-    ['Ryan', '/assets/images/resources/nearly5.jpg']
-  ]);
 
-  following = new Map<string, string>([
-    ['Amy', '/assets/images/resources/nearly1.jpg'],
-    ['Tracy', '/assets/images/resources/nearly3.jpg'],
-    ['Katy', '/assets/images/resources/nearly2.jpg'],
-    ['Susy', '/assets/images/resources/nearly4.jpg']
-  ]);
-
-  constructor() { }
+  constructor(public  data: DataService, public interact: InteractService) { }
 
   ngOnInit(): void {
+    this.interact.loadFollowers();
+    this.interact.loadFollowing();
+    this.interact.fetchUsers();
   }
 
 }

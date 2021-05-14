@@ -1,7 +1,8 @@
-import {User} from './User';
 
 export class Post{
-  postUser: User ;
+  userName: string;
+  userIconURL: string;
+  postID: number;
   postText: string;
   postImgURL: string;
   postDate: string ;
@@ -11,8 +12,10 @@ export class Post{
   commentArea: string;
 
 
-  constructor(user: User, text: string, img: string, date: string, likes: number, Comments: any[]) {
-    this.postUser = user;
+  constructor(username: string, userIcon: string, postID: number, text: string, img: string, date: string, likes: number, Comments: any[]) {
+    this.userName = username;
+    this.userIconURL = userIcon;
+    this.postID=postID;
     this.postText = text;
     this.postImgURL = img;
     this.postDate = date;

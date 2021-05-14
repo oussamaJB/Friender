@@ -13,7 +13,9 @@ export class TimelineComponent implements OnInit {
   users = this.data.getUsers();
   text = '';
 
-  constructor(public interact: InteractService, public data: DataService) {}
-  ngOnInit(): void {}
+  constructor(public interact: InteractService, public data: DataService,) {}
+  ngOnInit(): void {
+         this.interact.loadTimeline();
+  }
 
 }

@@ -12,24 +12,24 @@
                 <div class="central-meta">
                   <div class="frnds">
                     <ul class="nav nav-tabs">
-                      <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Followers</a> <span> {{ followers.size }} </span></li>
-                      <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Following</a><span> {{ following.size }} </span></li>
+                      <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Followers</a> <span> {{ this.interact.Followers.size }} </span></li>
+                      <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Following</a><span> {{ this.interact.Following.size }} </span></li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
                       <div class="tab-pane active fade show " id="frends" >
                         <ul class="nearby-contct">
-                          <li *ngFor="let follower of followers.keys()">
+                          <li *ngFor="let follower of this.interact.Followers.keys()">
                             <div  class="nearly-pepls">
                               <figure>
-                                <a  title=""><img [src]="followers.get(follower)" alt=""></a>
+                                <a  title=""><img [src]="this.interact.Followers.get(follower)" alt=""></a>
                               </figure>
                               <div class="pepl-info">
                                 <h4><a title=""> {{ follower }}</a></h4>
-                                <div *ngIf="following.has(follower); then unfollow else follow"> </div>
-                                <ng-template #unfollow> <button (click)="following.delete(follower)"  type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
-                                <ng-template #follow> <button (click)="following.set(follower,followers.get(follower))"  type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
+                                <div *ngIf="this.interact.Following.has(follower); then unfollow else Follow"> </div>
+                                <ng-template #unfollow> <button (click)="this.interact.Following.delete(follower)"  type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
+                                <ng-template #Follow> <button (click)="this.interact.Following.set(follower,this.interact.Followers.get(follower))"  type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
                               </div>
                             </div>
                           </li>
@@ -37,16 +37,16 @@
                         <div class="lodmore"><button class="btn-view btn-load-more"></button></div> </div>
                       <div class="tab-pane fade" id="frends-req" >
                         <ul class="nearby-contct">
-                          <li *ngFor="let followed of following.keys()">
+                          <li *ngFor="let followed of this.interact.Following.keys()">
                             <div  class="nearly-pepls">
                               <figure>
-                                <a  title=""><img [src]="followers.get(followed)" alt=""></a>
+                                <a  title=""><img [src]="this.interact.Followers.get(followed)" alt=""></a>
                               </figure>
                               <div class="pepl-info">
                                 <h4><a title=""> {{ followed }}</a></h4>
-                                <div *ngIf="following.has(followed); then unfollow else follow"> </div>
-                                <ng-template  #unfollow> <button (click)="following.delete(followed)" type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
-                                <ng-template #follow> <button  type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
+                                <div *ngIf="this.interact.Following.has(followed); then unfollow else Follow"> </div>
+                                <ng-template  #unfollow> <button (click)="this.interact.Following.delete(followed)" type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
+                                <ng-template #Follow> <button  type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
                               </div>
                             </div>
                           </li>
