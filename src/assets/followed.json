@@ -1,0 +1,32 @@
+[ 
+{
+"follow_id": 1,
+"icon": "/assets/images/resources/nearly1.jpg",
+"username" : "amy",
+"user_id": 11
+},
+{
+"follow_id": 2,
+"icon": "/assets/images/resources/nearly2.jpg",
+"username" : "tracy",
+"user_id": 12
+},
+{
+"follow_id": 3,
+"icon": "/assets/images/resources/nearly3.jpg",
+"username" : "katy",
+"user_id": 13
+},
+{
+"follow_id": 4,
+"icon": "/assets/images/resources/nearly4.jpg",
+"username" : "betty",
+"user_id": 14
+},
+{
+"follow_id": 5,
+"icon": "/assets/images/resources/nearly5.jpg",
+"username" : "susy",
+"user_id": 15
+}
+]

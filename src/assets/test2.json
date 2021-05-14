@@ -1,0 +1,38 @@
+[
+{
+"userName":"Rebicca", 
+"userIconURL":"/assets/images/resources/admin.jpg",
+"postID": 4, 
+"postText":"this was loaded from the second JSON test file", 
+"postImgURL":"/assets/images/resources/user-post.jpg", 
+"postDate":"2021/05/13 4:10", 
+"likesCount":6900, 
+"comments":[ ["Sarah", "comments are working too!", "2021-05-30 19:34"],["Alexis", "YAAAAAAAAAAAAAAY", "2021-05-30 19:44"] ], 
+"liked":false, 
+"commentArea":"" 
+},
+{
+"userName":"Rebicca", 
+"userIconURL":"/assets/images/resources/admin.jpg",
+"postID": 5, 
+"postText":"still working with multiple posts", 
+"postImgURL":"/assets/images/resources/user-post6.jpg", 
+"postDate":"2021/05/13 10:10", 
+"likesCount":9700, 
+"comments":[ ["Sarah", "comments are still working too!", "2021-05-30 19:34"],["Alexis", "Yeeeeeeep", "2021-05-30 19:44"] ], 
+"liked":false, 
+"commentArea":"" 
+},
+{
+"userName":"Rebicca", 
+"userIconURL":"/assets/images/resources/admin.jpg", 
+"postID": 6,
+"postText":"OMG IT IS WORKING!", 
+"postImgURL":"/assets/images/resources/user-post6.jpg", 
+"postDate":"2021/05/13 4:10", 
+"likesCount":6900, 
+"comments":[ ["Sarah", "comments are working too!", "2021-05-30 19:34"],["Alexis", "YAAAAAAAAAAAAAAY", "2021-05-30 19:44"] ], 
+"liked":false, 
+"commentArea":"" 
+}
+]
