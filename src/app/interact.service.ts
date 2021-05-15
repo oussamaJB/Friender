@@ -21,9 +21,6 @@ export class InteractService {
   public MyPosts: Post[];
   public FollowersData: Follow[];
   public FollowingData: Follow[];
-  public Following: Map<string, string>;
-  public Followers: Map<string, string>;
-  public RequestData: Map<string, Array<any> >;
   private postID = 100;
 
   public loadNewsFeed(){
@@ -56,10 +53,6 @@ export class InteractService {
       map.set(f.username, [f.user_id, f.follow_id]);
     }
     return map;
-  }
-  public fetchUsers(){
-    this.Followers = this.getUsers(this.FollowersData);
-    this.Following = this.getUsers(this.FollowingData);
   }
 
   public postImg(text: string){

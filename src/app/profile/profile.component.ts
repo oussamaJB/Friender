@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.interact.loadFollowers();
     this.interact.loadFollowing();
-    this.interact.fetchUsers();
   }
 
 }

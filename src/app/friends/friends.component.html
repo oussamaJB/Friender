@@ -1,69 +1,71 @@
+<section>
+  <div class="gap gray-bg">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row" id="page-contents">
+            <div class="col-lg-3">
 
-  <section>
-    <div class="gap gray-bg">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row" id="page-contents">
-              <div class="col-lg-3">
+            </div><!-- sidebar -->
+            <div class="col-lg-6">
+              <div class="central-meta">
+                <div class="frnds">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Followers</a> <span> {{ this.interact.FollowersData.length }} </span></li>
+                    <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Following</a><span> {{ this.interact.FollowingData.length }} </span></li>
+                  </ul>
 
-              </div><!-- sidebar -->
-              <div class="col-lg-6">
-                <div class="central-meta">
-                  <div class="frnds">
-                    <ul class="nav nav-tabs">
-                      <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Followers</a> <span> {{ this.interact.Followers.size }} </span></li>
-                      <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Following</a><span> {{ this.interact.Following.size }} </span></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                      <div class="tab-pane active fade show " id="frends" >
-                        <ul class="nearby-contct">
-                          <li *ngFor="let follower of this.interact.Followers.keys()">
-                            <div  class="nearly-pepls">
-                              <figure>
-                                <a  title=""><img [src]="this.interact.Followers.get(follower)" alt=""></a>
-                              </figure>
-                              <div class="pepl-info">
-                                <h4><a title=""> {{ follower }}</a></h4>
-                                <div *ngIf="this.interact.Following.has(follower); then unfollow else Follow"> </div>
-                                <ng-template #unfollow> <button (click)="this.load.removeFollow(getID(follower,this.interact.FollowersData));this.interact.Following.delete(follower)"  type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
-                                <ng-template #Follow> <button (click)="this.load.addFollow(getID(follower,this.interact.FollowersData));this.interact.Following.set(follower,this.interact.Followers.get(follower))"  type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
-                              </div>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div class="tab-pane active fade show " id="frends" >
+                      <ul class="nearby-contct">
+                        <li *ngFor="let follower of this.interact.FollowersData">
+                          <div  class="nearly-pepls">
+                            <figure>
+                              <a  title=""><img [src]="follower.icon" alt=""></a>
+                            </figure>
+                            <div class="pepl-info">
+                              <h4><a title=""> {{ follower.username }}</a></h4>
+                              <div *ngIf="isFollowed(follower,this.interact.FollowingData); then unfollow else Follow"> </div>
+                              <ng-template #unfollow> <button (click)="this.load.removeFollow(getID(follower,this.interact.FollowersData));deleteElement(follower.username,this.interact.FollowingData)"
+                                                              type="button" class="btn btn-secondary btn-sm fa-pull-right">Unfollow</button> </ng-template>
+                              <ng-template #Follow> <button (click)="this.load.addFollow(getID(follower,this.interact.FollowersData));this.interact.FollowingData.push(follower);"
+                                                            type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
                             </div>
-                          </li>
-                        </ul>
-                        <div class="lodmore"><button class="btn-view btn-load-more"></button></div> </div>
-                      <div class="tab-pane fade" id="frends-req" >
-                        <ul class="nearby-contct">
-                          <li *ngFor="let followed of this.interact.Following.keys()">
-                            <div  class="nearly-pepls">
-                              <figure>
-                                <a  title=""><img [src]="this.interact.Followers.get(followed)" alt=""></a>
-                              </figure>
-                              <div class="pepl-info">
-                                <h4><a title=""> {{ followed }}</a></h4>
-                                <div *ngIf="this.interact.Following.has(followed); then unfollow else Follow"> </div>
-                                <ng-template  #unfollow> <button (click)="this.load.removeFollow(getID(followed,this.interact.FollowingData));this.interact.Following.delete(followed)" type="button" class="btn btn-secondary btn-sm fa-pull-right"> Unfollow </button> </ng-template>
-                                <ng-template #Follow> <button  (click)="this.load.addFollow(getID(followed,this.interact.FollowingData));this.interact.Following.set(followed,this.interact.Followers.get(followed))" type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
-                              </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="lodmore"><button class="btn-view btn-load-more"></button></div> </div>
+                    <div class="tab-pane fade" id="frends-req" >
+                      <ul class="nearby-contct">
+                        <li *ngFor="let followed of this.interact.FollowingData">
+                          <div  class="nearly-pepls">
+                            <figure>
+                              <a  title=""><img [src]="followed.icon" alt=""></a>
+                            </figure>
+                            <div class="pepl-info">
+                              <h4><a title=""> {{ followed.username }}</a></h4>
+                              <div *ngIf="isFollowed(followed,this.interact.FollowingData); then unfollow else Follow"> </div>
+                              <ng-template  #unfollow> <button (click)="this.load.removeFollow(getID(followed,this.interact.FollowingData));
+                              deleteElement(followed.username,this.interact.FollowingData)" type="button" class="btn btn-secondary btn-sm fa-pull-right"> Unfollow </button> </ng-template>
+                              <ng-template #Follow> <button  (click)="this.load.addFollow(getID(followed,this.interact.FollowingData));
+                              this.interact.FollowingData.push(followed);" type="button" class="btn btn-primary btn-sm fa-pull-right">Follow</button> </ng-template>
                             </div>
-                          </li>
-                        </ul>
-                        <button class="btn-view btn-load-more"></button>
-                      </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <button class="btn-view btn-load-more"></button>
                     </div>
                   </div>
                 </div>
-              </div><!-- centerl meta -->
-              <div class="col-lg-3">
+              </div>
+            </div><!-- centerl meta -->
+            <div class="col-lg-3">
 
-              </div><!-- sidebar -->
-            </div>
+            </div><!-- sidebar -->
           </div>
         </div>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>

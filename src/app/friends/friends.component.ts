@@ -21,9 +21,13 @@ export class FriendsComponent implements OnInit {
        }
      }
   }
-
-  ngOnInit(): void {
-
+  isFollowed(follower: Follow, Following: Follow[]){
+    return(Following.filter(x => x.username === follower.username)[0] );
   }
+  deleteElement(username: string, FollowingData: Follow[] ){
+    this.interact.FollowingData.splice(this.interact.FollowingData.findIndex(x => x.username==username),1);
+  }
+
+  ngOnInit(): void { }
 
 }
