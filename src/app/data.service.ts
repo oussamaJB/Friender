@@ -30,6 +30,9 @@ export class DataService {
   post2 = new Post('Amy', '/assets/images/resources/admin.jpg', 2, 'Having fun in New York!', '/assets/images/resources/user-post6.jpg',
     '2021-04-30  18:32', 2200, this.comments2);
   public posts = new Array(this.post1, this.post2);
+  public cur_user= new User('python',1,'default_p.jpg','default_i.jpg',
+    'default_c.jpg','b44c1804953d4f9d6a60b5fc2e8ad95ecbdc20121741a2b7d9e53dacaa149f70',
+    'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);
 
   followers = new Map<string, string>([
     ['Amy', '/assets/images/resources/nearly1.jpg'],
@@ -46,17 +49,12 @@ export class DataService {
     ['Susy', '/assets/images/resources/nearly4.jpg']
   ]);
 
-  public curUser = new User('Amy', '/assets/images/resources/admin.jpg' );
-
   // End of fake data
 
   constructor() { }
 
   getPosts(){
     return this.posts;
-  }
-  getUser(){
-    return this.curUser;
   }
   getUsers(){
     return this.users;

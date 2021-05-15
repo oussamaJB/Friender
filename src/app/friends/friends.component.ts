@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../User';
 import {DataService} from '../data.service';
 import {InteractService} from '../interact.service';
+import {LoaderService} from '../loader.service';
+import {Follow} from '../Follow';
 
 @Component({
   selector: 'app-friends',
@@ -10,7 +12,15 @@ import {InteractService} from '../interact.service';
 })
 export class FriendsComponent implements OnInit {
 
-  constructor(public  data: DataService, public interact: InteractService) { }
+  constructor(public interact: InteractService, public load: LoaderService) { }
+
+  public getID(username: string, followArray: Follow[]){
+     for (const f of followArray){
+       if(f.username === username){
+          return(f.user_id);
+       }
+     }
+  }
 
   ngOnInit(): void {
     this.interact.loadFollowers();

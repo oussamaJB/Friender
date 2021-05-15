@@ -3,6 +3,7 @@ import {User} from '../User';
 import {Post} from '../Post';
 import {InteractService} from '../interact.service';
 import {DataService} from '../data.service';
+import {LoaderService} from '../loader.service';
 
 @Component({
   selector: 'app-timeline',
@@ -10,10 +11,9 @@ import {DataService} from '../data.service';
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
-  users = this.data.getUsers();
   text = '';
 
-  constructor(public interact: InteractService, public data: DataService,) {}
+  constructor(public interact: InteractService, public load: LoaderService ) {}
   ngOnInit(): void {
          this.interact.loadTimeline();
   }

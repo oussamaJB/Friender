@@ -12,10 +12,10 @@ import {map} from 'rxjs/operators';
 })
 export class InteractService {
 
-  constructor(public data: DataService, public loader: LoaderService) { }
+  constructor( public loader: LoaderService) { }
 
   likedPosts = new Set<Post>();
-  curUser = this.data.curUser;
+  cur_user = this.loader.cur_user;
   public posts: Post[];
   public MyPosts: Post[];
   public FollowersData: Follow[];
@@ -65,13 +65,13 @@ export class InteractService {
     if (text) {
       const comm = Array();
       const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
-      const newPost = new Post(this.curUser.userName, this.curUser.userIconURL, this.postID++, text, '', date, 0, comm);
+      const newPost = new Post(this.cur_user.username, this.cur_user.icon, this.postID++, text, '', date, 0, comm);
       this.MyPosts.push(newPost);
     }
   }
   public putComment(commentPost: Post){
     const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
-    commentPost.comments.push( [this.curUser.userName, commentPost.commentArea, date]);
+    commentPost.comments.push( [this.cur_user.username, commentPost.commentArea, date]);
     commentPost.commentArea = '';
   }
   public pressHeart(post: Post){

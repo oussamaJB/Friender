@@ -3,6 +3,7 @@ import {Post} from '../Post';
 import {User} from '../User';
 import {InteractService} from '../interact.service';
 import {DataService} from '../data.service';
+import {LoaderService} from '../loader.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,9 @@ import {DataService} from '../data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  users = this.data.getUsers();
   text = '';
 
-  constructor(public interact: InteractService, public data: DataService) {}
+  constructor(public interact: InteractService, public load: LoaderService) {}
   ngOnInit(): void {
         this.interact.loadNewsFeed();
    }

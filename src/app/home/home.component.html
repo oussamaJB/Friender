@@ -34,7 +34,7 @@
                               <ng-template #liked>
                                 <li>
                                   <span class="like" data-toggle="tooltip" title="like">
-																    <i (click)="this.interact.pressHeart(post)" class="far fa-heart"></i>
+																    <i (click)="this.interact.pressHeart(post);this.load.removeLike(post.postID);" class="far fa-heart"></i>
 																    <ins>{{ post.likesCount }}</ins>
                                   </span>
                                 </li>
@@ -42,7 +42,7 @@
                               <ng-template #notLiked>
                                 <li>
                                   <span class="dislike" data-toggle="tooltip" title="like">
-																    <i (click)="this.interact.pressHeart(post)" class="far fa-heart"></i>
+																    <i (click)="this.interact.pressHeart(post);this.load.addLike(post.postID);" class="far fa-heart"></i>
 																    <ins>{{ post.likesCount }}</ins>
                                   </span>
                                 </li>
@@ -63,7 +63,7 @@
                         <ul class="we-comet">
                           <li *ngFor="let comment of post.comments" >
                             <div class="comet-avatar">
-                              <img width="45" height="45"  [src]="users.get(comment[0])" alt="">
+                              <img width="45" height="45"  [src]="comment[3]" alt="">
                             </div>
                             <div class="we-comment">
                               <div class="coment-head">
@@ -81,11 +81,11 @@
 
                           <li class="post-comment">
                             <div class="comet-avatar">
-                              <img src="/assets/images/resources/comet-1.jpg" alt="">
+                              <img [src]="this.load.cur_user.icon" alt="">
                             </div>
                             <div class="post-comt-box">
                               <form method="post">
-                               <textarea [(ngModel)]="post.commentArea" (keyup.enter)="this.interact.putComment(post)" name="comment-text"  placeholder="Post your comment">
+                               <textarea [(ngModel)]="post.commentArea" (keyup.enter)="this.load.addComment(post); this.interact.putComment(post);" name="comment-text"  placeholder="Post your comment">
                                  <button   type="submit"></button>
                                </textarea>
                               </form>
