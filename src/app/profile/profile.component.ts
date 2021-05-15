@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {InteractService} from '../interact.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public interact: InteractService) { }
 
   ngOnInit(): void {
   }
