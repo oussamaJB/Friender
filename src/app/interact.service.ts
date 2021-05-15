@@ -14,7 +14,6 @@ export class InteractService {
 
   constructor( public loader: LoaderService) { }
 
-  likedPosts = new Set<Post>();
   public cur_user= new User('python',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
     '/assets/images/resources/timeline-1.jpg','b44c1804953d4f9d6a60b5fc2e8ad95ecbdc20121741a2b7d9e53dacaa149f70',
     'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);
@@ -77,12 +76,10 @@ export class InteractService {
     commentPost.commentArea = '';
   }
   public pressHeart(post: Post){
-    if (this.likedPosts.has(post)) {
-      this.likedPosts.delete(post);
+    if (post.liked) {
       post.liked = false;
       post.likesCount--;
     } else {
-      this.likedPosts.add(post);
       post.liked = true;
       post.likesCount++;
     }

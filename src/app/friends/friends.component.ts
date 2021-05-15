@@ -23,9 +23,7 @@ export class FriendsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.interact.loadFollowers();
-    this.interact.loadFollowing();
-    this.interact.fetchUsers();
+
   }
 
 }
