@@ -13,10 +13,10 @@ export class ProfileComponent implements OnInit {
   PP_URL = '';
   C_URL = '';
   setPP(url: string){
-     this.PP_URL = url;
+     this.PP_URL = 'assets/profile_pictures/'+url;
   }
   setC(url: string){
-     this.C_URL = url;
+     this.C_URL = 'assets/covers/'+url;
   }
 
   ngOnInit(): void {
