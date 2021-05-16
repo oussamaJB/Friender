@@ -10,7 +10,7 @@
               <div class="central-meta">
                 <div class="new-postbox">
                   <figure>
-                    <img [src]="this.load.cur_user.icon" alt="">
+                    <img [src]="this.interact.cur_user.icon" alt="">
                   </figure>
                   <div class="newpst-input">
                     <form method="post">
@@ -20,11 +20,11 @@
                           <li>
                             <i class="fa fa-camera"></i>
                             <label class="fileContainer">
-                              <input type="file">
+                              <input #image (change)="this.setURL(image.files[0].name)" type="file">
                             </label>
                           </li>
                           <li>
-                            <button (click)="this.load.addPost(text); this.interact.postImg(text); text=''; " >Publish</button>
+                            <button (click)="this.load.addPost(text,URL); this.interact.postImg(text,URL); text=''; URL=''; " >Publish</button>
                           </li>
                         </ul>
                       </div>

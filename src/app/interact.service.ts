@@ -14,7 +14,7 @@ export class InteractService {
 
   constructor( public loader: LoaderService) { }
 
-  public cur_user= new User('python',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
+  public cur_user= new User('oussama',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
     '/assets/images/resources/timeline-1.jpg','b44c1804953d4f9d6a60b5fc2e8ad95ecbdc20121741a2b7d9e53dacaa149f70',
     'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);
   public posts: Post[];
@@ -55,11 +55,11 @@ export class InteractService {
     return map;
   }
 
-  public postImg(text: string){
+  public postImg(text: string, img: string){
     if (text) {
       const comm = Array();
       const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
-      const newPost = new Post(this.cur_user.username, this.cur_user.icon, this.postID++, text, '', date, 0, comm);
+      const newPost = new Post(this.cur_user.username, this.cur_user.icon, this.postID++, text, img, date, 0, comm);
       this.MyPosts.push(newPost);
     }
   }

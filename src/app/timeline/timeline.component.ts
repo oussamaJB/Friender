@@ -12,6 +12,11 @@ import {LoaderService} from '../loader.service';
 })
 export class TimelineComponent implements OnInit {
   text = '';
+  URL = '';
+  setURL(url : string){
+     this.URL = '/assets/images/resources/'+url;
+     console.log(this.URL);
+  }
 
   constructor(public interact: InteractService, public load: LoaderService ) {}
   ngOnInit(): void {

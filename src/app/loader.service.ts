@@ -9,15 +9,18 @@ import {User} from './User';
   providedIn: 'root'
 })
 export class LoaderService {
-  public cur_user= new User('python',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
+  public cur_user= new User('python',1,'','/assets/images/resources/nearly1.jpg',
     '/assets/images/resources/timeline-1.jpg','05c035833be448fca5a2c4174e7b6ae85424bb2192acf8c50e6f8a25b1c74915',
     '8b88a6a0-eceb-431d-8cbe-3c7ad82c1f17',true);
   private baseURL = '127.0.0.1:5000/api'
-  private newsFeedURL = this.baseURL+'/get/home?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
+  /*private newsFeedURL = this.baseURL+'/get/home?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private timelineURL = this.baseURL+'/get/profile?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private  followersURL = this.baseURL+'/get/followers?'+'user_id='+this.cur_user.id+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
-  private  followingURL = this.baseURL+'/get/following?'+'user_id='+this.cur_user.id+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
-
+  private  followingURL = this.baseURL+'/get/following?'+'user_id='+this.cur_user.id+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;*/
+  private newsFeedURL = '/assets/test.json';
+  private timelineURL = '/assets/test2.json';
+  private  followersURL = '/assets/followed.json' ;
+  private  followingURL = '/assets/following.json';
   constructor(private http: HttpClient) { }
   public getPosts(){
      return this.http.get<Post[]>(this.newsFeedURL);
@@ -49,9 +52,9 @@ export class LoaderService {
       this.http.get(commentURL).subscribe();
       console.log('commented!');
   }
-  public addPost(text: string){
+  public addPost(text: string,img: string){
     const postURL= this.baseURL+
-      '/add/post?content='+text+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
+      '/add/post?content='+text+'&picture='+img+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
     this.http.get(postURL).subscribe();
     console.log('posted!');
   }
@@ -66,5 +69,18 @@ export class LoaderService {
       '/remove/follow?followed_id='+userID+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
     this.http.get(followURL).subscribe();
     console.log('unfollowed!');
+  }
+  public changePP(url: string){
+    if(url) {
+      const PPurl = this.baseURL + '/change/profile_picture?profile_picture=' + url + '&secret_hash=' + this.cur_user.secret_hash + '&secret_user=' + this.cur_user.secret_user;
+      this.http.get(PPurl).subscribe();
+    }
+  }
+  public changeC(url: string){
+    if(url) {
+      const Curl=
+      this.baseURL + '/change/cover?cover=' + url + '&secret_hash=' + this.cur_user.secret_hash + '&secret_user=' + this.cur_user.secret_user;
+      this.http.get(Curl).subscribe();
+    }
   }
 }

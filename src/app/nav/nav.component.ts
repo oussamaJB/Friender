@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoaderService} from '../loader.service';
+import {InteractService} from '../interact.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,7 @@ import {LoaderService} from '../loader.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public load: LoaderService ) { }
+  constructor(public interact: InteractService ) { }
 
   ngOnInit(): void { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {InteractService} from '../interact.service';
+import {LoaderService} from '../loader.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,15 @@ import {InteractService} from '../interact.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public interact: InteractService) { }
+  constructor(public interact: InteractService, public  loader: LoaderService) { }
+  PP_URL = '';
+  C_URL = '';
+  setPP(url: string){
+     this.PP_URL = url;
+  }
+  setC(url: string){
+     this.C_URL = url;
+  }
 
   ngOnInit(): void {
     this.interact.loadFollowers();
