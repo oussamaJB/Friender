@@ -1,0 +1,26 @@
+Question for an interview with a potential Data Scientist:
+
+General topics
+• What is the difference between regression and classification?
+• How do you deal with Exploratory Data Analysis (EDA)? What kind of analysis you do usually? How do you fix missed values?
+• Which feature selection approaches do you know?
+• What is one-hot encoding and how binary relevance can be applied to solve classification challenges?
+• Which dimension reducing techniques do you know?
+• How do you measure model performance for classification cases?
+• How k-means algorithm works, and how would you define the optimal number of clusters?
+• You have built a model. How would you use it in production?
+• Did you work with recommendation systems? If yes, how recommendations were calculated?
+• Did you work with Hadoop ecosystem?
+• How would you do anomaly detection for time series?
+• How do you do feature engineering?
+
+Neural networks
+• How do you define number of neurons, layers, activation functions?
+• What is back propagation?
+• What is the goal of dropout?
+• How can you check – did we get an overfitting?
+
+NLP
+• What is Bayes Theorem is about?
+• How would you develop your own spell checker?
+• What TF-IDF do?
