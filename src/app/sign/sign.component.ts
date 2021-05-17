@@ -50,7 +50,7 @@ export class SignComponent implements OnInit {
     this.url=this.baseURL+
       this.name+"&password="+this.pass;
     this._usersService._url = this.url;
-    this._usersService.getUser().subscribe(data =>this.u=data);
+    this._usersService.getUser();
   }
 
 

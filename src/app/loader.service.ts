@@ -83,7 +83,7 @@ export class LoaderService {
       Form.append('profile_picture',img,img.name);
       Form.append('secret_hash',this.cur_user.secret_hash);
       Form.append('secret_user',this.cur_user.secret_user);
-      return this.http.post(PPurl, Form);
+      return this.http.post<Post>(PPurl, Form);
     }
   }
   public changeC(img: File){

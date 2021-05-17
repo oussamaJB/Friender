@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   }
   public changePP(img: File){
     let url = '';
-    this.loader.changeC(img).subscribe(data => {
+    this.loader.changePP(img).subscribe(data => {
       url = data.postImgURL;
     });
     this.curPP = url;
