@@ -12,10 +12,10 @@ import {LoaderService} from '../loader.service';
 })
 export class TimelineComponent implements OnInit {
   text = '';
-  URL = '';
-  setURL(url : string){
-     this.URL = '/assets/images/resources/'+url;
-     console.log(this.URL);
+  img: File = null;
+  setImg(img : File){
+    this.img = img;
+    console.log(this.img);
   }
 
   constructor(public interact: InteractService, public load: LoaderService ) {}

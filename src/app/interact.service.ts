@@ -6,22 +6,24 @@ import {LoaderService} from './loader.service';
 import {HttpClient} from '@angular/common/http';
 import {Follow} from './Follow';
 import {map} from 'rxjs/operators';
+import {AuthenticateService} from './authenticate.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteractService {
 
-  constructor( public loader: LoaderService) { }
+  constructor( public loader: LoaderService, public  auth: AuthenticateService) { }
 
-  public cur_user= new User('oussama',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
+  /*public cur_user= new User('oussama',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
     '/assets/images/resources/timeline-1.jpg','b44c1804953d4f9d6a60b5fc2e8ad95ecbdc20121741a2b7d9e53dacaa149f70',
-    'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);
+    'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);*/
+  public cur_user = this.auth.getuser();
   public posts: Post[];
   public MyPosts: Post[];
   public FollowersData: Follow[];
   public FollowingData: Follow[];
-  private postID = 100;
+  private postsID = 100;
 
   public loadNewsFeed(){
     this.loader.getPosts().subscribe( input => this.posts = input ) ;
@@ -55,13 +57,21 @@ export class InteractService {
     return map;
   }
 
-  public postImg(text: string, img: string){
-    if (text) {
+  public postImg(text: string, img: File){
       const comm = Array();
       const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
-      const newPost = new Post(this.cur_user.username, this.cur_user.icon, this.postID++, text, img, date, 0, comm);
-      this.MyPosts.push(newPost);
-    }
+      let postID = 0;
+      let postImgURL = '';
+      this.loader.addPost(text,img).subscribe(data  =>  {
+        postID = data.postID;
+        postImgURL = data.postImgURL;
+      });
+      if(postID){
+         const newPost = new Post(this.cur_user.username, this.cur_user.icon, postID, text, postImgURL + img, date, 0, comm);
+         this.MyPosts.push(newPost);
+      }else{
+          alert('There was an error while submitting your post');
+      }
   }
   public putComment(commentPost: Post){
     const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
@@ -79,3 +89,4 @@ export class InteractService {
   }
 
 }
+

@@ -20,11 +20,11 @@
                           <li>
                             <i class="fa fa-camera"></i>
                             <label class="fileContainer">
-                              <input #image (change)="this.setURL(image.files[0].name)" type="file">
+                              <input #image (change)="this.setImg(image.files[0])" type="file">
                             </label>
                           </li>
                           <li>
-                            <button (click)="this.load.addPost(text,URL); this.interact.postImg(text,URL); text=''; URL=''; " >Publish</button>
+                            <button (click)="this.interact.postImg(text,img); text=''; img=null; " >Publish</button>
                           </li>
                         </ul>
                       </div>
