@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from '../Post';
-import {User} from '../User';
 import {InteractService} from '../interact.service';
-import {DataService} from '../data.service';
 import {LoaderService} from '../loader.service';
 
+
+// This is the News feed: the page where the user sees posts of the people he is following
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

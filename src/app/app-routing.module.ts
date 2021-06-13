@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import {SignComponent} from './sign/sign.component';
-import {SignupComponent} from './signup/signup.component';
 import {ProfileComponent} from './profile/profile.component';
 import {HomeComponent} from './home/home.component';
 import {TimelineComponent} from './timeline/timeline.component';

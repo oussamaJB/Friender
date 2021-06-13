@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LoaderService} from '../loader.service';
 import {InteractService} from '../interact.service';
 
+// This component is the navigation bar
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',

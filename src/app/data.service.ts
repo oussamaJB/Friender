@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import {User} from './User';
 import {Post} from './Post';
 
+
+// This service was used for unit testing
+// It is no longer used in the project's components
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  // Fake data used to test the components
+  // Fake data used to do unit tests for the components
 
   users = new Map<string, string>([
     ['Amy', '/assets/images/resources/admin.jpg'],
@@ -53,6 +56,7 @@ export class DataService {
 
   constructor() { }
 
+  // getters to return the test data
   getPosts(){
     return this.posts;
   }

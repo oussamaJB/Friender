@@ -1,10 +1,9 @@
 import { Component, OnInit} from '@angular/core';
-import {User} from '../User';
-import {Post} from '../Post';
 import {InteractService} from '../interact.service';
-import {DataService} from '../data.service';
 import {LoaderService} from '../loader.service';
 
+
+// This component displays the user's personal posts
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',

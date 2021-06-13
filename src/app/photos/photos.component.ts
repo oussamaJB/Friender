@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../User';
-import {Post} from '../Post';
-import {DataService} from '../data.service';
 import {InteractService} from '../interact.service';
 
+
+// This component display all the photos uploaded by the user
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',

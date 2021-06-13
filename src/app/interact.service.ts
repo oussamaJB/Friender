@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Post} from './Post';
-import {User} from './User';
-import {DataService} from './data.service';
 import {LoaderService} from './loader.service';
-import {HttpClient} from '@angular/common/http';
 import {Follow} from './Follow';
-import {map} from 'rxjs/operators';
 import {AuthenticateService} from './authenticate.service';
 
+
+// This service will manage the user's interactions with the UI.
+// It will use the loader service to save these interactions in the server side.
 @Injectable({
   providedIn: 'root'
 })
@@ -15,16 +14,16 @@ export class InteractService {
 
   constructor( public loader: LoaderService, public  auth: AuthenticateService) { }
 
-  /*public cur_user= new User('oussama',1,'/assets/images/resources/user-avatar.jpg','/assets/images/resources/nearly1.jpg',
-    '/assets/images/resources/timeline-1.jpg','b44c1804953d4f9d6a60b5fc2e8ad95ecbdc20121741a2b7d9e53dacaa149f70',
-    'da76e296-eed4-443d-bbd3-cb83e1e5d7c2',true);*/
+  // keeping track of the current user
   public cur_user = this.auth.getuser();
+
+  // Data to be loaded from the server
   public posts: Post[];
   public MyPosts: Post[];
   public FollowersData: Follow[];
   public FollowingData: Follow[];
-  private postsID = 100;
 
+  // Methods to load the user's data into the web page
   public loadNewsFeed(){
     this.loader.getPosts().subscribe( input => this.posts = input ) ;
   }
@@ -41,6 +40,7 @@ export class InteractService {
     this.loader.getFollowing().subscribe(input => this.FollowingData = input);
   }
 
+  // getters to request other users' data
   public getUsers(followArray: Follow[]){
     const map = new Map<string, string>()  ;
     for (const f of followArray){
@@ -57,21 +57,21 @@ export class InteractService {
     return map;
   }
 
+  // Adding new content or interacting with existing content
   public postImg(text: string, img: File){
       const comm = Array();
       const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
-      let postID = 0;
-      let postImgURL = '';
-      this.loader.addPost(text,img).subscribe(data  =>  {
+      let postID;
+      let postImgURL;
+      this.loader.addPost(text,img).then(data  =>  {
         postID = data.postID;
         postImgURL = data.postImgURL;
-      });
-      if(postID){
-         const newPost = new Post(this.cur_user.username, this.cur_user.icon, postID, text, postImgURL + img, date, 0, comm);
-         this.MyPosts.push(newPost);
-      }else{
-          alert('There was an error while submitting your post');
-      }
+      }).then(
+        () => {
+          const newPost = new Post(this.cur_user.username, this.cur_user.icon, postID, text, postImgURL + img, date, 0, comm);
+          this.MyPosts.push(newPost);
+          console.log(newPost);
+        }).catch(error => alert((error)));
   }
   public putComment(commentPost: Post){
     const date = new Date().toISOString().slice(0, 16).replace('T', ' ');
