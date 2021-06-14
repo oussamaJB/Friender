@@ -13,7 +13,7 @@ export class AuthenticateService {
   constructor(private http: HttpClient, private router: Router) {
   }
   public access = false;
-  public baseURL = 'http://localhost:5000/api' ;
+  public baseURL = 'http://guinea-pig.ddns.net/api' ;
 
 // sign in
   public _url = '';

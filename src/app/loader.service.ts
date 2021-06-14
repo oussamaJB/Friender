@@ -14,7 +14,7 @@ export class LoaderService {
   public cur_user = this.auth.getuser();
 
   // Generating the URLs based on the user's info
-  private baseURL = 'http://localhost:5000/api';
+  private baseURL = 'http://guinea-pig.ddns.net/api';
   private newsFeedURL = this.baseURL+'/get/home?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private timelineURL = this.baseURL+'/get/profile?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private  followersURL = this.baseURL+'/get/followers?'+'user_id='+this.cur_user.id+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
@@ -88,7 +88,7 @@ export class LoaderService {
       Form.append('profile_picture',img,img.name);
       Form.append('secret_hash',this.cur_user.secret_hash);
       Form.append('secret_user',this.cur_user.secret_user);
-      return this.http.post<Post>(PPurl, Form);
+      return this.http.post<Post>(PPurl, Form).toPromise();
     }
   }
   public changeC(img: File){
@@ -98,7 +98,7 @@ export class LoaderService {
       Form.append('cover',img,img.name);
       Form.append('secret_hash',this.cur_user.secret_hash);
       Form.append('secret_user',this.cur_user.secret_user);
-      return this.http.post<Post>(Curl, Form);
+      return this.http.post<Post>(Curl, Form).toPromise();
     }
   }
 

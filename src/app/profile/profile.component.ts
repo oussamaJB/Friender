@@ -28,18 +28,22 @@ export class ProfileComponent implements OnInit {
   // change cover picture
   public changeC(img: File){
     let url = '';
-    this.loader.changeC(img).subscribe(data => {
+    this.loader.changeC(img).then(data => {
       url = data.postImgURL;
+    }).then(
+      () => {
+      this.curC = url;
     });
-    this.curC = url;
   }
   // change profile picture
   public changePP(img: File){
     let url = '';
-    this.loader.changePP(img).subscribe(data => {
+    this.loader.changePP(img).then(data => {
       url = data.postImgURL;
+    }).then(
+      () => {
+      this.curPP = url;
     });
-    this.curPP = url;
   }
   ngOnInit(): void {
     this.interact.loadFollowers();
