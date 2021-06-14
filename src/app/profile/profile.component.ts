@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   public changeC(img: File){
     let url = '';
     this.loader.changeC(img).then(data => {
-      url = data.postImgURL;
+      url = data.cover;
     }).then(
       () => {
       this.curC = url;
@@ -38,11 +38,14 @@ export class ProfileComponent implements OnInit {
   // change profile picture
   public changePP(img: File){
     let url = '';
+    let url2 = '';
     this.loader.changePP(img).then(data => {
-      url = data.postImgURL;
+      url = data.profile_picture;
+      url2 = data.icon;
     }).then(
       () => {
       this.curPP = url;
+      this.interact.cur_user.icon = url2;
     });
   }
   ngOnInit(): void {
