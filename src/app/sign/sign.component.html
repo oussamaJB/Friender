@@ -17,22 +17,24 @@
   <div class="forms-container">
     <div class="signin-signup">
 
-      <form #login='ngForm'(ngSubmit)="loginData()" class="sign-in-form">
+      <form #login1='ngForm'(ngSubmit)="loginData()" class="sign-in-form">
         <img class="avatar" src="assets/img/avatar3.jpg" alt="">
         <br><br><br><br>
         <h2 class="title">Sign in</h2>
         <div class="input-field0">
           <i class="fas fa-user"></i>
           <input  type="text" placeholder="Username" name="username" class="form-control"
-                  [(ngModel)]='name'
+                  [(ngModel)]="name" required minlength="4"
+
           />
         </div>
         <div class="input-field0">
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password" name="pwd" class="form-control"
-                 [(ngModel)]='pass'
+                 [(ngModel)]="pass" required minlength="4"
 
-          />
+          /><br><br>
+          <a (click)="forgot()" href="#forgot-pw" class="forgot-pw"><br>Forgot Password?</a><br><br>
         </div>
 
         <div *ngIf="forgot_pass" id="forgot-pw">
@@ -62,9 +64,10 @@
 
 
         <br><br>
-        <button type="submit" value="Login" class="btn btn-primary"
-                [disabled]="login.invalid"
-        >LOGIN</button>
+        <button type="submit"  class="btn btn-primary"
+                [disabled]="login1.invalid"
+        >Login
+        </button>
 
 
         <p class="social-text">Or Sign in with social platforms</p>
@@ -90,21 +93,25 @@
         <h2 class="title">Sign up</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" name="name"  [(ngModel)]="username" required/>
+          <input type="text" placeholder="Username" name="name"
+                 [(ngModel)]="username" required
+                 minlength="3"/>
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email"  name="email" [(ngModel)]="email"/>
+          <input type="email" placeholder="Email"  name="email" [(ngModel)]="email"required/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password"  name="pwd" [(ngModel)]="pwd"/>
+          <input type="password" placeholder="Password"  name="pwd" [(ngModel)]="pwd" required
+                 minlength="4"/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Confirm Password"  name="pwdd"
-                 [(ngModel)]="pwdd"/>
-          <h4 *ngIf="not_valide" style="color:red">Enter the same password</h4>
+          <input type="password" placeholder="Confirm Password"  name="pwdd" required
+                 minlength="4"
+                 [(ngModel)]="pwdd"/> <br><br>
+          <h3 *ngIf="not_valide" style="color:red"><br>Enter the same password</h3>
           <br><br>
 
         </div>
@@ -126,7 +133,7 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
-        <input type="submit" class="btn" value="Sign up" />
+        <input [disabled]="register.invalid" type="submit" class="btn" value="Sign up" />
 
       </form>
     </div>
@@ -145,7 +152,9 @@
 
         </div>
         <br>
-        <button  (click)='movee()' class="btn transparent" id="sign-up-btn">
+        <button
+          (click)='movee()' class="btn transparent"
+          id="sign-up-btn">
           Sign up
         </button>
       </div>
@@ -154,7 +163,7 @@
     </div>
     <div class="panel right-panel">
       <div class="content">
-        <h1> <strong> One of us ? </strong> </h1>
+        <h1>One of us ?</h1>
 
         <div class="text-typing">
           <p> <strong>See what's happening in the &nbsp;</strong></p>

@@ -14,7 +14,7 @@ export class LoaderService {
   public cur_user = this.auth.getuser();
 
   // Generating the URLs based on the user's info
-  private baseURL = 'http://guinea-pig.ddns.net:5000/api';
+  private baseURL = 'http://localhost:5000/api';
   private newsFeedURL = this.baseURL+'/get/home?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private timelineURL = this.baseURL+'/get/profile?'+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
   private  followersURL = this.baseURL+'/get/followers?'+'user_id='+this.cur_user.id+'&secret_hash='+this.cur_user.secret_hash+'&secret_user='+this.cur_user.secret_user;
