@@ -3,7 +3,7 @@
 
   <section>
     <div class="feature-photo">
-      <figure><img src="{{ curC }}" alt=""></figure>
+      <figure><img src="{{ this.interact.cur_user.cover }}" alt=""></figure>
       <div class="add-btn">
         <span> {{ this.interact.FollowersData.length }} followers  </span>
       </div>
@@ -19,7 +19,7 @@
           <div class="col-lg-2 col-sm-3">
             <div class="user-avatar">
               <figure>
-                <img src="{{ curPP }}" alt="">
+                <img src="{{ this.interact.cur_user.profile_picture }}" alt="">
                 <form class="edit-phto">
                   <i class="fa fa-camera-retro"></i>
                   <label class="fileContainer">

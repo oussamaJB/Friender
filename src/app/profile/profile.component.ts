@@ -15,8 +15,6 @@ export class ProfileComponent implements OnInit {
   constructor(public interact: InteractService, public  loader: LoaderService) { }
   newPP = null;
   newC = null;
-  curC  = this.interact.cur_user.cover;
-  curPP = this.interact.cur_user.profile_picture;
 
   // setters to manage the files to upload
   setPP(img: File){
@@ -32,7 +30,7 @@ export class ProfileComponent implements OnInit {
       url = data.cover;
     }).then(
       () => {
-      this.curC = url;
+      this.interact.cur_user.cover = url;
     });
   }
   // change profile picture
@@ -44,7 +42,7 @@ export class ProfileComponent implements OnInit {
       url2 = data.icon;
     }).then(
       () => {
-      this.curPP = url;
+      this.interact.cur_user.profile_picture = url;
       this.interact.cur_user.icon = url2;
     });
   }
